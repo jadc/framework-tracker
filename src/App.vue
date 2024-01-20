@@ -15,34 +15,23 @@ export default {
     }
   },
   methods: {
+		addProject(framework, projectName, projectDesc, projectDone, projectMonths) {
+			let project = 
+				{
+					name: projectName,
+					desc: projectDesc,
+					done: projectDone,
+					months: projectMonths,
+				}
+			console.log(project)
+			console.log(this.$store.state.frameworks)
+			this.$store.commit('addProject', framework, project)
+		},
     loadFrameworks() {
       return ["React", "Vue", "Angular"]; // todo: HTTP GET data from backend, not hardcoded
     },
     loadProjects() {
-      return {
-        "React": [
-          {
-            name: "my react App",
-            desc: "it does things",
-            done: false,
-            months: 3,
-          },
-          {
-            name: "react cookbook app",
-            desc: "it does things",
-            done: true,
-            months: 5,
-          },
-        ],
-        "Angular": [
-          {
-            name: "angular app",
-            desc: "it does things",
-            done: false,
-            months: 3
-          },
-        ],
-      }
+			return this.$store.state.frameworks
     },
   },
   computed: {
@@ -51,8 +40,10 @@ export default {
     // }
   },
   mounted() {
+		this.addProject("Vue", "my project", "cool", false, 3)
     this.frameworksList = this.loadFrameworks();
     this.projectsList = this.loadProjects();
+		console.log(this.$store.state.frameworks)
   }
 }
 </script>
