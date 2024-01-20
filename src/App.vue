@@ -120,6 +120,10 @@ export default {
       ></Framework>
   </main>
   <ProjectDialog v-if="dialogOpen" @saveProject="saveProject" :framework="frameworkOfNewProject"/>
+  <div class="inf">
+    <p>&vellip;</p>
+    <p>&infin;</p>
+  </div>
 </template>
 
 <style scoped>
@@ -143,5 +147,10 @@ header img {
 
 header {
   font-size: 200%;
+}
+
+.inf {
+  text-align: center;
+  font-size: 300%;
 }
 </style>
