@@ -1,8 +1,12 @@
-<script>
+<script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
 import Framework from './components/Framework.vue';
+
+</script>
+
+<script>
 export default {
   data() {
     return {
