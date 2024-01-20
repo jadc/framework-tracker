@@ -105,7 +105,7 @@ export default {
 <template>
   <header>
     <img src="./assets/logo.png" alt="Logo">
-    <h1>Framework Tracker</h1>
+    <h1>Sisyphuscript</h1>
   </header>
   <main>
     <Framework
