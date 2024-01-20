@@ -46,9 +46,42 @@ export default {
     },
   },
   computed: {
-    // frameworksExperience() {
-    //   for framework in frameworksList
-    // }
+    monthsInFramework() {
+      let months = {}
+      for(let i = 0; i < this.frameworksList.length; i++) {
+        let frameworkName = this.frameworksList[i]
+        let projects = this.projectsList[frameworkName]
+        months[frameworkName] = 0
+
+        if(!projects) {
+          continue;
+        }
+
+        for(let j = 0; j < projects.length; j++) {
+          months[frameworkName] += projects[j].months;
+        }
+      }
+      return months;
+    },
+    completedProjectsInFramework() {
+      let completed = {}
+      for(let i = 0; i < this.frameworksList.length; i++) {
+        let frameworkName = this.frameworksList[i]
+        let projects = this.projectsList[frameworkName]
+        completed[frameworkName] = 0
+
+        if(!projects) {
+          continue;
+        }
+
+        for(let j = 0; j < projects.length; j++) {
+          if(projects[j].done) {
+            completed[frameworkName] += 1
+          }
+        }
+      }
+      return completed; 
+    }
   },
   mounted() {
     this.frameworksList = this.loadFrameworks();
@@ -63,6 +96,8 @@ export default {
       v-for="framework in frameworksList"
       :key="framework"
       :name="framework"
+      :months="monthsInFramework[framework]"
+      :completed="completedProjectsInFramework[framework]"
       :projects="projectsList[framework]"
       ></Framework>
   </main>

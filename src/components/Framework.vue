@@ -5,6 +5,8 @@ import Button from "./Button.vue"
 defineProps<{
   name: string
   projects: Array<any>
+  months: number
+  completed: number
 }>()
 </script>
 
@@ -16,8 +18,8 @@ defineProps<{
                 <h2>{{ name }}</h2>
             </div>
             <div style="text-align: right">
-                <p>X completed projects</p>
-                <p>X months of experience</p>
+                <p>{{ completed }} completed projects</p>
+                <p>{{ months }} months of experience</p>
             </div>
         </div>
         <div class="list">
