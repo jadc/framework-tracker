@@ -83,6 +83,7 @@ export default {
       v-for="framework in frameworksList"
       :key="framework"
       :name="framework"
+      :url="'src/assets/'+framework.toLowerCase()+'.svg'"
       :months="monthsInFramework[framework]"
       :completed="completedProjectsInFramework[framework]"
       :projects="projectsList[framework]"
