@@ -70,10 +70,9 @@ export default {
     }
   },
   mounted() {
-		this.addProject("Vue", "my project", "cool", false, 3)
+    this.$store.commit("initStore")
     this.frameworksList = this.loadFrameworks();
     this.projectsList = this.loadProjects();
-    console.log(this.projectsList)
   }
 }
 </script>

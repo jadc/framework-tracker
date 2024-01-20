@@ -8,18 +8,7 @@ import router from './router'
 const store = createStore({
 	state() {
 		return {
-			frameworks: {
-				"Vue": [
-					{
-						name: "This website",
-						desc: "Track your web projects",
-						done: false,
-						months: 1,
-					}
-				]
-			},
-			count: 1
-			
+			frameworks: {},
 		}
 	},
 	mutations: {
@@ -41,11 +30,17 @@ const store = createStore({
 				})
 			}
 		},
-		test(state, num) {
-			state.count += num
+		initStore(state) {
+			if(localStorage.getItem('store')) {
+				this.replaceState(
+					Object.assign(state, JSON.parse(localStorage.getItem('store')))
+				)
+			}
 		}
-
 	}
+})
+store.subscribe((mutation, state) => {
+	localStorage.setItem('store', JSON.stringify(state))
 })
 
 const app = createApp(App)
