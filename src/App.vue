@@ -35,7 +35,6 @@ export default {
 			return this.$store.state.frameworks
     },
     openDialog(framework) {
-      console.log('framework', framework)
       this.frameworkOfNewProject = framework;
       this.dialogOpen = true;
     },
@@ -51,10 +50,8 @@ export default {
         this.projectsList[this.frameworkOfNewProject] = []
       }
 
-      console.log('adding new project', this.projectsList[this.frameworkOfNewProject])
-      this.projectsList[this.frameworkOfNewProject].push(newProject)
-
-      console.log('projectsList[', this.frameworkOfNewProject, ']=', this.projectsList[this.frameworkOfNewProject])
+      this.addProject(this.frameworkOfNewProject, name, description, false, months)
+      // this.projectsList[this.frameworkOfNewProject].push(newProject)
 
       this.dialogOpen = false;
     }
