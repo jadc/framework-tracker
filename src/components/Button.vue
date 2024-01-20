@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <button>Add</button>
+    <button class="add">Add</button>
 </template>
 
 <style>
@@ -21,7 +21,7 @@ button:hover {
     background-color: #e8e8e8;
 }
 
-button::before {
+.add::before {
     content: url("../assets/plus.svg");
     float: left;
     width: 16px;
