@@ -2,13 +2,16 @@
 defineProps<{
   name: string,
   months: number,
-  done: boolean
+  desc: string
 }>()
 </script>
 
 <template>
     <article>
-        <p>{{ name }}</p>
+        <span>
+          <h4>{{ name }}</h4>
+          <p class="desc">{{ desc }}</p>
+        </span>
         <span style="display: flex; align-items: center;">
           <p>{{ months }} months</p>
           <input type="checkbox">
@@ -47,6 +50,13 @@ input[type=checkbox] {
 
 input[type=checkbox]:checked {
   background-color: rgb(102, 140, 223);
+}
+
+.desc {
+  width: 20em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 </style>

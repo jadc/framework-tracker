@@ -37,7 +37,7 @@ function emitDialog() {
                 :key="project.name"
                 :name="project.name"
                 :months="project.months"
-                :done="project.done"
+                :desc="project.desc"
             ></Project>
         </div>
         <Button type="submit" @click.prevent="emitDialog"/>
