@@ -103,6 +103,10 @@ export default {
 </script>
 
 <template>
+  <header>
+    <img src="./assets/logo.png" alt="Logo">
+    <h1>Framework Tracker</h1>
+  </header>
   <main>
     <Framework
       v-for="framework in frameworksList"
@@ -122,5 +126,22 @@ export default {
 main {
   margin: auto;
   max-width: 40em;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 2em 0;
+}
+
+header img {
+  width: 3em;
+}
+
+header {
+  font-size: 200%;
 }
 </style>
