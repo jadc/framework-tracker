@@ -11,21 +11,18 @@ export default {
   data() {
     return {
       frameworksList: [],
-      projectsList: {},
+      projectsList: {}
     }
   },
   methods: {
-		addProject(framework, projectName, projectDesc, projectDone, projectMonths) {
-			let project = 
-				{
-					name: projectName,
-					desc: projectDesc,
-					done: projectDone,
-					months: projectMonths,
-				}
-			console.log(project)
-			console.log(this.$store.state.frameworks)
-			this.$store.commit('addProject', framework, project)
+		addProject(pframework, pname, pdesc, pdone, pmonths) {
+			this.$store.commit('addProject', {
+        framework: pframework,
+        name: pname,
+        desc: pdesc,
+        done: pdone,
+        months: pmonths
+      })
 		},
     loadFrameworks() {
       return ["React", "Vue", "Angular"]; // todo: HTTP GET data from backend, not hardcoded
@@ -76,7 +73,7 @@ export default {
 		this.addProject("Vue", "my project", "cool", false, 3)
     this.frameworksList = this.loadFrameworks();
     this.projectsList = this.loadProjects();
-		console.log(this.$store.state.frameworks)
+    console.log(this.projectsList)
   }
 }
 </script>

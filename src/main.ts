@@ -8,18 +8,43 @@ import router from './router'
 const store = createStore({
 	state() {
 		return {
-			frameworks: {}
+			frameworks: {
+				"Vue": [
+					{
+						name: "This website",
+						desc: "Track your web projects",
+						done: false,
+						months: 1,
+					}
+				]
+			},
+			count: 1
+			
 		}
 	},
 	mutations: {
-		addProject(state, framework, project) {
-			if (state.frameworks[framework]) {
-				state.frameworks[framework].push(project)
+		addProject(state, project) {
+			if (state.frameworks[project.framework]) {
+				state.frameworks[project.framework].push({
+					name: project.name,
+					desc: project.desc,
+					done: project.done,
+					months: project.months
+				})
 			} else {
-				state.frameworks[framework] = []
-				state.frameworks[framework].push(project)
+				state.frameworks[project.framework] = []
+				state.frameworks[project.framework].push({
+					name: project.name,
+					desc: project.desc,
+					done: project.done,
+					months: project.months
+				})
 			}
+		},
+		test(state, num) {
+			state.count += num
 		}
+
 	}
 })
 
