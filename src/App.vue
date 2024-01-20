@@ -13,42 +13,30 @@ export default {
       frameworksList: [],
       projectsList: {},
       dialogOpen: false,
-      temp: ""
+
+      // this is poor style, there was a better way to do things that did not involve this variable
+      frameworkOfNewProject: ""
     }
   },
   methods: {
+		addProject(pframework, pname, pdesc, pdone, pmonths) {
+			this.$store.commit('addProject', {
+        framework: pframework,
+        name: pname,
+        desc: pdesc,
+        done: pdone,
+        months: pmonths
+      })
+		},
     loadFrameworks() {
       return ["React", "Vue", "Angular"]; // todo: HTTP GET data from backend, not hardcoded
     },
     loadProjects() {
-      return {
-        "React": [
-          {
-            name: "my react App",
-            desc: "it does things",
-            done: false,
-            months: 3,
-          },
-          {
-            name: "react cookbook app",
-            desc: "it does things",
-            done: true,
-            months: 5,
-          },
-        ],
-        "Angular": [
-          {
-            name: "angular app",
-            desc: "it does things",
-            done: false,
-            months: 3
-          },
-        ],
-      }
+			return this.$store.state.frameworks
     },
     openDialog(framework) {
       console.log('framework', framework)
-      this.temp = framework;
+      this.frameworkOfNewProject = framework;
       this.dialogOpen = true;
     },
     saveProject(name, description, months) {
@@ -59,14 +47,14 @@ export default {
         months: months,
       };
 
-      if(!this.projectsList[this.temp]) {
-        this.projectsList[this.temp] = []
+      if(!this.projectsList[this.frameworkOfNewProject]) {
+        this.projectsList[this.frameworkOfNewProject] = []
       }
 
-      console.log('adding new project', this.projectsList[this.temp])
-      this.projectsList[this.temp].push(newProject)
+      console.log('adding new project', this.projectsList[this.frameworkOfNewProject])
+      this.projectsList[this.frameworkOfNewProject].push(newProject)
 
-      console.log('projectsList[', this.temp, ']=', this.projectsList[this.temp])
+      console.log('projectsList[', this.frameworkOfNewProject, ']=', this.projectsList[this.frameworkOfNewProject])
 
       this.dialogOpen = false;
     }
@@ -110,6 +98,7 @@ export default {
     }
   },
   mounted() {
+    this.$store.commit("initStore")
     this.frameworksList = this.loadFrameworks();
     this.projectsList = this.loadProjects();
   }
@@ -128,7 +117,7 @@ export default {
       @openDialog="openDialog"
       ></Framework>
   </main>
-  <ProjectDialog v-if="dialogOpen" @saveProject="saveProject" :framework="temp"/>
+  <ProjectDialog v-if="dialogOpen" @saveProject="saveProject" :framework="frameworkOfNewProject"/>
 </template>
 
 <style scoped>
