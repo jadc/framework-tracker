@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 
 import Framework from './components/Framework.vue';
+import Button from './components/Button.vue'
 
 </script>
 
@@ -65,6 +65,7 @@ export default {
       :name="framework"
       :projects="projectsList[framework]"
       ></Framework>
+      <Button target="Framework"/>
   </main>
   <!--<RouterView/>-->
 </template>

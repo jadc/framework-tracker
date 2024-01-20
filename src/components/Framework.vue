@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Project from './Project.vue'
+import Button from "./Button.vue"
 
 defineProps<{
   name: string
@@ -28,6 +29,7 @@ defineProps<{
                 :done="project.done"
             ></Project>
         </div>
+        <Button target="Project"/>
     </section>
 </template>
 
@@ -36,7 +38,7 @@ section {
     box-sizing: border-box;
     width: 100%;
     padding: 2em;
-    margin-bottom: 2em;
+    margin: 2em 0;
 
     background-color: #f5f5f5;
     border-radius: 0.5em;
