@@ -12,6 +12,8 @@ export default {
     return {
       frameworksList: [],
       projectsList: {},
+      dialogOpen: false,
+      temp: ""
     }
   },
   methods: {
@@ -44,6 +46,30 @@ export default {
         ],
       }
     },
+    openDialog(framework) {
+      console.log('framework', framework)
+      this.temp = framework;
+      this.dialogOpen = true;
+    },
+    saveProject(name, description, months) {
+      let newProject = {
+        name: name,
+        desc: description,
+        done: false,
+        months: months,
+      };
+
+      if(!this.projectsList[this.temp]) {
+        this.projectsList[this.temp] = []
+      }
+
+      console.log('adding new project', this.projectsList[this.temp])
+      this.projectsList[this.temp].push(newProject)
+
+      console.log('projectsList[', this.temp, ']=', this.projectsList[this.temp])
+
+      this.dialogOpen = false;
+    }
   },
   computed: {
     monthsInFramework() {
@@ -99,9 +125,10 @@ export default {
       :months="monthsInFramework[framework]"
       :completed="completedProjectsInFramework[framework]"
       :projects="projectsList[framework]"
+      @openDialog="openDialog"
       ></Framework>
   </main>
-  <ProjectDialog/>
+  <ProjectDialog v-if="dialogOpen" @saveProject="saveProject" :framework="temp"/>
 </template>
 
 <style scoped>

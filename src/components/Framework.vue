@@ -2,12 +2,18 @@
 import Project from './Project.vue'
 import Button from "./Button.vue"
 
-defineProps<{
+const props = defineProps<{
   name: string
   projects: Array<any>
   months: number
   completed: number
 }>()
+
+const emit = defineEmits(['openDialog'])
+
+function emitDialog() {
+    emit('openDialog', props.name)
+}
 </script>
 
 <template>
@@ -31,7 +37,7 @@ defineProps<{
                 :done="project.done"
             ></Project>
         </div>
-        <Button/>
+        <Button type="submit" @click.prevent="emitDialog"/>
     </section>
 </template>
 

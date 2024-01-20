@@ -1,20 +1,31 @@
 <script setup lang="ts">
+
+let projectName = ""
+let projectDesc = ""
+let projectMonths = 0
+
+const emit = defineEmits(['saveProject'])
+
+function save() {
+    emit('saveProject', projectName, projectDesc, projectMonths)
+}
+
 </script>
 
 <template>
-    <dialog>
-        <p style="text-align: center">Project Options</p>
-        <form action="dialog" onsubmit="save">
+    <dialog open>
+        <p style="text-align: center">New Project</p>
+        <form>
             <label for="name">Name</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" v-model="projectName">
 
             <label for="name">Description</label>
-            <textarea id="name" name="name"/>
+            <textarea id="name" name="name" v-model="projectDesc"/>
 
             <label for="months">Months</label>
-            <input type="number" id="months" name="months">
+            <input type="number" id="months" name="months" v-model="projectMonths">
 
-            <button type="submit">Save</button>
+            <button @click.prevent="save">Save</button>
         </form>
     </dialog>
 </template>
