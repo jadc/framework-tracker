@@ -22,13 +22,13 @@ export default {
       return {
         "React": [
           {
-            name: "myApp1",
+            name: "my react App",
             desc: "it does things",
             done: false,
             months: 3,
           },
           {
-            name: "myApp2",
+            name: "react cookbook app",
             desc: "it does things",
             done: true,
             months: 5,
@@ -36,16 +36,10 @@ export default {
         ],
         "Angular": [
           {
-            name: "myApp1",
+            name: "angular app",
             desc: "it does things",
             done: false,
             months: 3
-          },
-          {
-            name: "myApp2",
-            desc: "it does things",
-            done: true,
-            months: 5
           },
         ],
       }
@@ -73,6 +67,7 @@ export default {
         v-for="framework in frameworksList"
         :key="framework"
         :name="framework"
+        :projects="projectsList[framework]"
         ></Framework>
     </main>
   </body>

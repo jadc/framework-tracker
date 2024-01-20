@@ -3,6 +3,7 @@ import Project from './Project.vue'
 
 defineProps<{
   name: string
+  projects: array
 }>()
 </script>
 
@@ -13,8 +14,11 @@ defineProps<{
             <h2>{{ name }} Projects</h2>
         </div>
         <div class="list">
-            <Project name="Project 1"></Project>
-            <Project name="Project 2"></Project>
+            <Project
+                v-for="project in projects"
+                :key="project.name"
+                :name="project.name"
+            ></Project>
         </div>
     </section>
 </template>
