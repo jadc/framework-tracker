@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
@@ -6,7 +6,7 @@ import Framework from './components/Framework.vue';
 
 </script>
 
-<script>
+<script lang="ts">
 export default {
   data() {
     return {
@@ -61,17 +61,14 @@ export default {
   <header>
     <h1>Framework Tracker</h1>
   </header>
-  <body>
-    <main>
-      <Framework
-        v-for="framework in frameworksList"
-        :key="framework"
-        :name="framework"
-        :projects="projectsList[framework]"
-        ></Framework>
-    </main>
-  </body>
-
+  <main>
+    <Framework
+      v-for="framework in frameworksList"
+      :key="framework"
+      :name="framework"
+      :projects="projectsList[framework]"
+      ></Framework>
+  </main>
   <!--<RouterView/>-->
 </template>
 
@@ -80,13 +77,7 @@ header {
   text-align: center;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-}
-
 main {
-  width: 100%;
   margin: 0 20em; /* todo: media query to remove this on mobile */
 }
 
