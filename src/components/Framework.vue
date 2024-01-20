@@ -29,7 +29,7 @@ defineProps<{
                 :done="project.done"
             ></Project>
         </div>
-        <Button target="Project"/>
+        <Button/>
     </section>
 </template>
 

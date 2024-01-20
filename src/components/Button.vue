@@ -1,11 +1,8 @@
 <script setup lang="ts">
-defineProps<{
-  target: string
-}>()
 </script>
 
 <template>
-    <button>Add {{ target }}</button>
+    <button>Add</button>
 </template>
 
 <style>

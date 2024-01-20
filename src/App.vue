@@ -65,7 +65,6 @@ export default {
       :name="framework"
       :projects="projectsList[framework]"
       ></Framework>
-      <Button target="Framework"/>
   </main>
   <!--<RouterView/>-->
 </template>
