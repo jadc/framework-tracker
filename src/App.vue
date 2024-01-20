@@ -69,7 +69,11 @@ export default {
   </header>
   <body>
     <main>
-      <Framework name="React"></Framework>
+      <Framework
+        v-for="framework in frameworksList"
+        :key="framework"
+        :name="framework"
+        ></Framework>
     </main>
   </body>
 
