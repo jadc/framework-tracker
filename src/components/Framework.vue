@@ -21,7 +21,9 @@ function emitDialog() {
     <section>
         <div class="title">
             <div style="display: flex; align-items: center;">
-                <img :src="url" alt="Icon">
+                <div class="icon">
+                    <img :src="url" alt="Icon">
+                </div>
                 <h2>{{ name }}</h2>
             </div>
             <div style="text-align: right">
@@ -65,9 +67,16 @@ section:hover {
     align-items: center;
 }
 
-img {
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 4em;
-    aspect-ratio: 1/1;
     margin-right: 1em;
 }
+
+img {
+    width: 100%;
+}
+
 </style>
