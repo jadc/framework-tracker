@@ -12,7 +12,6 @@ button {
     margin: auto;
     padding: 0.25em 1em;
     line-height: 16px;
-    background-color: white;
     border-radius: 4px;
     border: 1px solid grey;
 }
