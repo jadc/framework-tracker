@@ -58,9 +58,6 @@ export default {
 </script>
 
 <template>
-  <header>
-    <h1>Framework Tracker</h1>
-  </header>
   <main>
     <Framework
       v-for="framework in frameworksList"
