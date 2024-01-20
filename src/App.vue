@@ -2,7 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 
 import Framework from './components/Framework.vue';
-import Button from './components/Button.vue'
+import ProjectDialog from './components/ProjectDialog.vue'
 
 </script>
 
@@ -101,17 +101,12 @@ export default {
       :projects="projectsList[framework]"
       ></Framework>
   </main>
-  <!--<RouterView/>-->
+  <ProjectDialog/>
 </template>
 
 <style scoped>
-header {
-  text-align: center;
-}
-
 main {
   margin: auto;
   max-width: 40em;
 }
-
 </style>
