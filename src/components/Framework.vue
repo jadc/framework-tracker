@@ -7,6 +7,7 @@ const props = defineProps<{
   projects: Array<any>
   months: number
   completed: number
+  url: string
 }>()
 
 const emit = defineEmits(['openDialog'])
@@ -20,7 +21,7 @@ function emitDialog() {
     <section>
         <div class="title">
             <div style="display: flex; align-items: center;">
-                <img src="../assets/logo.svg" alt="Icon">
+                <img :src="url" alt="Icon">
                 <h2>{{ name }}</h2>
             </div>
             <div style="text-align: right">
