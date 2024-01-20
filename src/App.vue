@@ -29,7 +29,7 @@ export default {
       })
 		},
     loadFrameworks() {
-      return ["React", "Vue", "Angular"]; // todo: HTTP GET data from backend, not hardcoded
+      return ["React", "Vue", "Angular", "Svelte", "Bootstrap", "HTMX", "Redux", "Babylon", "Cib", "OpenLayers", "VanJS", "NextJS", "Webpack", "Ember", "Passport"]; // todo: HTTP GET data from backend, not hardcoded
     },
     loadProjects() {
 			return this.$store.state.frameworks
