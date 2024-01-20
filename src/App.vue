@@ -1,12 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 
 import Framework from './components/Framework.vue';
+import Button from './components/Button.vue'
 
 </script>
 
-<script>
+<script lang="ts">
 export default {
   data() {
     return {
@@ -35,9 +35,42 @@ export default {
     },
   },
   computed: {
-    // frameworksExperience() {
-    //   for framework in frameworksList
-    // }
+    monthsInFramework() {
+      let months = {}
+      for(let i = 0; i < this.frameworksList.length; i++) {
+        let frameworkName = this.frameworksList[i]
+        let projects = this.projectsList[frameworkName]
+        months[frameworkName] = 0
+
+        if(!projects) {
+          continue;
+        }
+
+        for(let j = 0; j < projects.length; j++) {
+          months[frameworkName] += projects[j].months;
+        }
+      }
+      return months;
+    },
+    completedProjectsInFramework() {
+      let completed = {}
+      for(let i = 0; i < this.frameworksList.length; i++) {
+        let frameworkName = this.frameworksList[i]
+        let projects = this.projectsList[frameworkName]
+        completed[frameworkName] = 0
+
+        if(!projects) {
+          continue;
+        }
+
+        for(let j = 0; j < projects.length; j++) {
+          if(projects[j].done) {
+            completed[frameworkName] += 1
+          }
+        }
+      }
+      return completed; 
+    }
   },
   mounted() {
 		this.addProject("Vue", "my project", "cool", false, 3)
@@ -49,20 +82,16 @@ export default {
 </script>
 
 <template>
-  <header>
-    <h1>Framework Tracker</h1>
-  </header>
-  <body>
-    <main>
-      <Framework
-        v-for="framework in frameworksList"
-        :key="framework"
-        :name="framework"
-        :projects="projectsList[framework]"
-        ></Framework>
-    </main>
-  </body>
-
+  <main>
+    <Framework
+      v-for="framework in frameworksList"
+      :key="framework"
+      :name="framework"
+      :months="monthsInFramework[framework]"
+      :completed="completedProjectsInFramework[framework]"
+      :projects="projectsList[framework]"
+      ></Framework>
+  </main>
   <!--<RouterView/>-->
 </template>
 
@@ -71,14 +100,9 @@ header {
   text-align: center;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-}
-
 main {
-  width: 100%;
-  margin: 0 20em; /* todo: media query to remove this on mobile */
+  margin: auto;
+  max-width: 40em;
 }
 
 </style>
