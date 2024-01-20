@@ -1,13 +1,18 @@
 <script setup lang="ts">
 defineProps<{
-  name: string
+  name: string,
+  months: number,
+  done: boolean
 }>()
 </script>
 
 <template>
     <article>
         <p>{{ name }}</p>
-        <input type="checkbox">
+        <span style="display: flex; align-items: center;">
+          <p>{{ months }} months</p>
+          <input type="checkbox">
+        </span>
     </article>
 </template>
 
@@ -16,7 +21,7 @@ article {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #eee;
+  background-color: #e2e4e7;
   padding: 1em;
   margin: 0.5em 0;
   border-radius: 0.5em;
@@ -37,10 +42,11 @@ input[type=checkbox] {
   background-color: #FFFFFF;
   transition: background 300ms;
   cursor: pointer;
+  margin-left: 1em;
 }
 
 input[type=checkbox]:checked {
-  background-color: green;
+  background-color: rgb(102, 140, 223);
 }
 
 </style>

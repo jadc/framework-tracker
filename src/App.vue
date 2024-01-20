@@ -78,7 +78,8 @@ header {
 }
 
 main {
-  margin: 0 20em; /* todo: media query to remove this on mobile */
+  margin: auto;
+  max-width: 40em;
 }
 
 </style>
